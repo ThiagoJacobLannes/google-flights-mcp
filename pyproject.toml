@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "google-flights-mcp"
+version = "0.1.0"
+description = "MCP server for searching Google Flights prices and options."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=1.2,<2",
+    "fast-flights>=3.0.2",
+    # fast-flights 3.0.2's own metadata forgets to declare this transitive
+    # dependency (it imports typing_extensions.override at import time).
+    "typing-extensions>=4.10.0",
+    "primp>=0.15.0",
+    "selectolax>=0.3.21",
+    "httpx>=0.27.0",
+    "airportsdata>=20240605",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.14.0",
+]
+
+[project.scripts]
+google-flights-mcp = "google_flights_mcp.server:main"
+
+[tool.setuptools]
+packages = ["google_flights_mcp", "google_flights_mcp.providers"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
