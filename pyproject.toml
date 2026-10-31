@@ -3,11 +3,11 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "google-flights-mcp"
+name = "google-flights-search-mcp"
 version = "0.1.0"
 description = "MCP server for searching Google Flights prices and options."
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
 requires-python = ">=3.11"
 dependencies = [
     "mcp>=1.2,<2",
@@ -27,7 +27,11 @@ dev = [
     "pytest-mock>=3.14.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/ThiagoJacobLannes/google-flights-mcp"
+
 [project.scripts]
+google-flights-search-mcp = "google_flights_mcp.server:main"
 google-flights-mcp = "google_flights_mcp.server:main"
 
 [tool.setuptools]

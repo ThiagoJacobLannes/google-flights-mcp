@@ -1,5 +1,7 @@
 # google-flights-mcp
 
+<!-- mcp-name: io.github.ThiagoJacobLannes/google-flights-mcp -->
+
 MCP server for searching Google Flights prices and schedules from Claude.
 
 Two interchangeable data sources behind one interface (`google_flights_mcp/providers/base.py`):
@@ -20,6 +22,16 @@ Two interchangeable data sources behind one interface (`google_flights_mcp/provi
 - **EU/UK cookie-consent wall**: Google shows a cookie-consent interstitial to requests from those regions before returning real results. The `fast-flights` provider detects this and auto-submits "Reject all" (the privacy-preserving option) before retrying — see `providers/fast_flights_provider.py` if this ever needs updating for a change on Google's side.
 
 ## Install
+
+**Quickest** (needs [uv](https://docs.astral.sh/uv/)): no clone needed, it runs straight from PyPI.
+
+```bash
+claude mcp add google-flights -- uvx google-flights-search-mcp
+```
+
+For Claude Desktop, use `"command": "uvx", "args": ["google-flights-search-mcp"]`.
+
+**From source:**
 
 Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/).
 
